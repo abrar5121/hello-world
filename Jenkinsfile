@@ -13,7 +13,14 @@ pipeline {
         stage(' find out what present') {
             steps{
                 script{
-                    sh ' mvn clean install '
+                   sh  '''
+                     export MAVEN_HOME=/opt/apache-maven-3.6.3
+                     export PATH=$PATH:$MAVEN_HOME/bin
+                     mvn --version
+
+                     mvn clean install 
+
+                     '''
                     
                     }
                 }
